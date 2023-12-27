@@ -84,6 +84,10 @@ system! {
         electrical_mobility::ElectricalMobility,
         electrical_resistance::ElectricalResistance,
         electrical_resistivity::ElectricalResistivity,
+        electrical_reactance::ElectricalReactance,
+        electrical_susceptance::ElectricalSusceptance,
+        electrical_impedance::ElectricalImpedance,
+        electrical_admittance::ElectricalAdmittance,
         energy::Energy,
         force::Force,
         frequency::Frequency,
@@ -201,6 +205,18 @@ pub mod marker {
     /// let r: Ratio = a.into();
     /// ```
     pub trait SolidAngleKind: Kind {}
+
+    /// Separate reactance from resistance and impedance.
+    pub trait ElectricalReactanceKind: Kind {}
+
+    /// Separate impedance from resistance and reactance.
+    pub trait ElectricalImpedanceKind: Kind {}
+
+    /// Separate susceptance from conductance and admittance.
+    pub trait ElectricalSusceptanceKind: Kind {}
+
+    /// Separate admittance from conductance and susceptance.
+    pub trait ElectricalAdmittanceKind: Kind {}
 
     /// `InformationKind` is a `Kind` for separating information quantities from their identically
     /// dimensioned non-information quantity counterparts. Conversions to and from `InformationKind`
