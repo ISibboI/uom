@@ -14,11 +14,11 @@
 //! [orbiter]: https://en.wikipedia.org/wiki/Mars_Climate_Orbiter
 //!
 //! ## Usage
-//! `uom` requires `rustc` 1.60.0 or later. Add this to your `Cargo.toml`:
+//! `uom` requires `rustc` 1.65.0 or later. Add this to your `Cargo.toml`:
 //!
 //! ```toml
 //! [dependencies]
-//! uom = "0.35.0"
+//! uom = "0.36.0"
 //! ```
 //!
 //! and this to your crate root:
@@ -44,6 +44,9 @@
 //!     let velocity/*: Velocity*/ = length / time;
 //!     let _acceleration = calc_acceleration(velocity, time);
 //!     //let error = length + time; // error[E0308]: mismatched types
+//!
+//!     // Get a quantity value in a specific unit.
+//!     let time_in_nano_seconds = time.get::<uom::si::time::nanosecond>();
 //! }
 //!
 //! fn calc_acceleration(velocity: Velocity, time: Time) -> Acceleration {
@@ -66,7 +69,7 @@
 //! ```toml
 //! [dependencies]
 //! uom = {
-//!     version = "0.35.0",
+//!     version = "0.36.0",
 //!     default-features = false,
 //!     features = [
 //!         "autoconvert", # automatic base unit conversion.
@@ -424,7 +427,7 @@ pub trait Conversion<V> {
     #[must_use = "method returns a new number and does not mutate the original value"]
     #[inline(always)]
     fn coefficient() -> Self::T {
-        <Self::T as crate::num::One>::one()
+        <Self::T as num::One>::one()
     }
 
     /// Constant portion of [conversion factor](https://jcgm.bipm.org/vim/en/1.24.html) for
@@ -437,7 +440,7 @@ pub trait Conversion<V> {
     #[inline(always)]
     #[allow(unused_variables)]
     fn constant(op: ConstantOp) -> Self::T {
-        <Self::T as crate::num::Zero>::zero()
+        <Self::T as num::Zero>::zero()
     }
 
     /// Instance [conversion factor](https://jcgm.bipm.org/vim/en/1.24.html).
