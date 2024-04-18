@@ -379,6 +379,10 @@ mod unit;
 #[macro_use]
 pub mod si;
 
+#[cfg(feature = "approx")]
+#[doc(hidden)]
+pub mod feature_approx;
+
 #[cfg(test)]
 mod tests;
 

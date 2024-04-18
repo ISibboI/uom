@@ -101,8 +101,8 @@ use_serde = ["serde"]
 # Internal features to include appropriate num-* crates.
 rational-support = ["num-rational"]
 bigint-support = ["num-bigint", "num-rational/num-bigint-std"]
-complex-support = ["num-complex"]
-approx = ["dep:approx"]
+complex-support = ["num-complex", "approx/num-complex"]
+approx-support = ["approx"]
 
 [[example]]
 name = "base"
